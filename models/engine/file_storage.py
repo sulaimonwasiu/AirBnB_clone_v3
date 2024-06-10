@@ -79,7 +79,7 @@ class FileStorage:
                 return obj
         return None
 
-    def count(self, cls=None)
+    def count(self, cls=None):
         """
         count of instances
         :param cls: class
