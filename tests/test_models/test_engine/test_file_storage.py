@@ -35,16 +35,16 @@ class TestFileStorageDocs(unittest.TestCase):
         """Test that models/engine/file_storage.py conforms to PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
         result = pep8s.check_files(['models/engine/file_storage.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
+        error_message = "Found code style errors (and warnings)."
+        self.assertEqual(result.total_errors, 0, error_message)
 
     def test_pep8_conformance_test_file_storage(self):
         """Test tests/test_models/test_file_storage.py conforms to PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
         result = pep8s.check_files(['tests/test_models/test_engine/\
 test_file_storage.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
+        error_message = "Found code style errors (and warnings)."
+        self.assertEqual(result.total_errors, 0, error_message)
 
     def test_file_storage_module_docstring(self):
         """Test for the file_storage.py module docstring"""
@@ -144,7 +144,7 @@ class TestStorageGet(unittest.TestCase):
         testing get() method
         :return: True if pass, False if not pass
         """
-	storage = FileStorage()
+        storage = FileStorage()
         print(self.state.id)
         result = storage.get(cls="State", id=self.state.id)
 
@@ -155,7 +155,7 @@ class TestStorageGet(unittest.TestCase):
         testing get() method for id match
         :return: True if pass, false if not pass
         """
-	storage = FileStorage()
+        storage = FileStorage()
         result = storage.get(cls="State", id=str(self.state.id))
 
         self.assertEqual(self.state.id, result.id)
@@ -165,9 +165,8 @@ class TestStorageGet(unittest.TestCase):
         testing get() method for None return
         :return: True if pass, false if not pass
         """
-	storage = FileStorage()
-       	result = storage.get(cls="State", id="doesnotexist")
-
+        storage = FileStorage()
+        result = storage.get(cls="State", id="doesnotexist")
         self.assertIsNone(result)
 
 
@@ -204,7 +203,7 @@ class TestStorageCount(unittest.TestCase):
         testing counting all instances
         :return: True if pass, false if not pass
         """
-	storage = FileStorage()
+        storage = FileStorage()
         result = storage.count()
 
         self.assertEqual(len(storage.all()), result)
@@ -214,7 +213,7 @@ class TestStorageCount(unittest.TestCase):
         testing counting state instances
         :return: True if pass, false if not pass
         """
-	storage = FileStorage()
+        storage = FileStorage()
         result = storage.count(cls="State")
 
         self.assertEqual(len(storage.all("State")), result)
@@ -224,7 +223,7 @@ class TestStorageCount(unittest.TestCase):
         testing counting non existent
         :return: True if pass, false if not pass
         """
-	storage = FileStorage()
+        storage = FileStorage()
         result = storage.count(cls="City")
 
         self.assertEqual(

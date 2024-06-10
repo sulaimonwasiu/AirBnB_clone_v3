@@ -118,7 +118,7 @@ class TestStorageGet(unittest.TestCase):
         testing get() method
         :return: True if pass, False if not pass
         """
-	storage = DBStorage()
+        storage = DBStorage()
         result = storage.get(cls="State", id=self.state.id)
 
         self.assertIsInstance(result, State)
@@ -128,7 +128,7 @@ class TestStorageGet(unittest.TestCase):
         testing get() method for id match
         :return: True if pass, false if not pass
         """
-	storage = DBStorage()
+        storage = DBStorage()
         result = storage.get(cls="State", id=str(self.state.id))
 
         self.assertEqual(self.state.id, result.id)
@@ -138,7 +138,7 @@ class TestStorageGet(unittest.TestCase):
         testing get() method for None return
         :return: True if pass, false if not pass
         """
-	storage = DBStorage()
+        storage = DBStorage()
         result = storage.get(cls="State", id="doesnotexist")
 
         self.assertIsNone(result)
@@ -184,7 +184,7 @@ class TestStorageCount(unittest.TestCase):
         testing counting all instances
         :return: True if pass, false if not pass
         """
-	storage = DBStorage()
+        storage = DBStorage()
         result = storage.count()
 
         self.assertEqual(len(storage.all()), result)
@@ -194,7 +194,7 @@ class TestStorageCount(unittest.TestCase):
         testing counting state instances
         :return: True if pass, false if not pass
         """
-	storage = DBStorage()
+        storage = DBStorage()
         result = storage.count(cls="State")
 
         self.assertEqual(len(storage.all("State")), result)
@@ -204,7 +204,7 @@ class TestStorageCount(unittest.TestCase):
         testing counting non existent
         :return: True if pass, false if not pass
         """
-	storage = DBStorage()
+        storage = DBStorage()
         result = storage.count(cls="City")
 
         self.assertEqual(int(0 if len(storage.all("City")) is None else
