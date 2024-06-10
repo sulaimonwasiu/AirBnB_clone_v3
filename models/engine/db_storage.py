@@ -59,7 +59,7 @@ class DBStorage:
         """commit all changes of the current database session"""
         self.__session.commit()
 
-    def get(self, cls, id)
+    def get(self, cls, id):
         """
         fetches specific object
         :param cls: class of object as string
@@ -68,7 +68,7 @@ class DBStorage:
         """
         all_class = self.all(cls)
         for obj in all_class.values():
-            if str(obj.id) == id:
+            if id == str(obj.id):
                 return obj
         return None
 
